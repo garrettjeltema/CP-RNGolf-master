@@ -85,7 +85,7 @@ class Play extends Phaser.Scene {
 
         // ball/one-way collision
         this.physics.add.collider(this.ball, this.oneWay, (ball, oneWay) => {
-            oneWay.setBounce(0)
+            // oneWay.setBounce(0)
         })
     }
 
