@@ -26,11 +26,6 @@ class Play extends Phaser.Scene {
         // add background grass
         this.grass = this.add.image(0, 0, 'grass').setOrigin(0)
 
-        this.shotCount = 0
-        this.ballShot = false
-        this.score = 0
-        this.percentageMade = 0
-
         // add cup
         this.cup = this.physics.add.sprite(width / 2, height / 10, 'cup')
         this.cup.body.setCircle(this.cup.width / 4)
@@ -84,14 +79,13 @@ class Play extends Phaser.Scene {
         this.physics.add.collider(this.ball, this.walls)
 
         // ball/one-way collision
-        this.physics.add.collider(this.ball, this.oneWay, (ball, oneWay) => {
-            // oneWay.setBounce(0)
-        })
+        this.physics.add.collider(this.ball, this.oneWay)
     }
 
     update() {
         // reset ball
         if(this.ballDestroyed) {
+            this.ballDestroyed = false
             this.ball.body.setVelocityX(0)
             this.ball.body.setVelocityY(0)
             this.ball.body.reset(width / 2, height - height / 10)
